@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 280px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      background: #f8f9fa;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    
+    .header h2 {
+      margin: 0;
+      color: #333;
+      font-size: 18px;
+    }
+    
+    .option {
+      margin: 12px 0;
+      padding: 8px;
+      background: white;
+      border-radius: 6px;
+      border: 1px solid #e1e5e9;
+    }
+    
+    .option label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 8px;
+    }
+    
+    .option input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .path-input {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-top: 6px;
+      box-sizing: border-box;
+    }
+    
+    .save-btn {
+      width: 100%;
+      padding: 8px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+    
+    .save-btn:hover {
+      background: #3367d6;
+    }
+    
+    .options-btn {
+      width: 100%;
+      padding: 6px;
+      background: #f8f9fa;
+      color: #666;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 8px;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+    }
+    
+    .options-btn:hover {
+      background: #e8f0fe;
+      color: #4285f4;
+    }
+    
+    .status {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .warning {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #856404;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>Silent Downloads</h2>
+  </div>
+  
+  <div class="option">
+    <label>
+      <input type="checkbox" id="silentDownloads">
+      <span>Enable Silent Downloads</span>
+    </label>
+  </div>
+  
+  <div class="option">
+    <label for="downloadPath">Download Directory:</label>
+    <input type="text" id="downloadPath" class="path-input" placeholder="e.g., Downloads/MyFolder">
+    <div class="warning">
+      leave empty to use your default download dir
+    </div>
+  </div>
+  
+  <button class="save-btn" id="saveBtn">Save Settings</button>
+  
+  <button class="options-btn" id="optionsBtn">Advanced Settings</button>
+  
+  <div class="status" id="status"></div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

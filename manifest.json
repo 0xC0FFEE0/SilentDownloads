@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Silent Downloads",
+  "version": "1.0",
+  "description": "Hide all download notifications and prompts",
+  "permissions": [
+    "downloads",
+    "storage",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Silent Downloads"
+  }
+}

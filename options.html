@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Silent Downloads - Options</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
+      padding: 20px;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #e1e5e9;
+      padding-bottom: 15px;
+    }
+    
+    .header h1 {
+      margin: 0;
+      color: #333;
+      font-size: 24px;
+    }
+    
+    .header p {
+      color: #666;
+      margin: 10px 0 0 0;
+    }
+    
+    .option-group {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e1e5e9;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .option-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .option {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 10px;
+    }
+    
+    .option input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .option-description {
+      color: #666;
+      font-size: 13px;
+      margin-left: 28px;
+      margin-top: 5px;
+    }
+    
+    .path-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+    
+    .btn-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .save-btn {
+      padding: 10px 20px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      min-width: 120px;
+    }
+    
+    .save-btn:hover {
+      background: #3367d6;
+    }
+    
+    .advanced-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e1e5e9;
+    }
+    
+    .status {
+      text-align: center;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+    }
+    
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    
+    .log-container {
+      background: #f1f3f4;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      padding: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 10px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Silent Downloads - Options</h1>
+    <p>Configure how your downloads are handled</p>
+  </div>
+  
+  <div class="option-group">
+    <div class="option-title">Basic Settings</div>
+    
+    <div class="option">
+      <label>
+        <input type="checkbox" id="silentDownloads">
+        <span>Enable Silent Downloads</span>
+      </label>
+    </div>
+    <div class="option-description">
+      Automatically handle downloads without prompts or notifications
+    </div>
+    
+    <div class="option">
+      <label for="downloadPath">Custom Download Directory:</label>
+      <input type="text" id="downloadPath" class="path-input" placeholder="e.g., Downloads/MyFolder">
+    </div>
+    <div class="option-description">
+      Leave empty to use your browser's default download location
+    </div>
+  </div>
+  
+  <div class="option-group">
+    <div class="option-title">Notification Settings</div>
+    
+    <div class="option">
+      <label>
+        <input type="checkbox" id="hideNotifications">
+        <span>Hide Download Notifications</span>
+      </label>
+    </div>
+    <div class="option-description">
+      Prevent browser notifications for downloads
+    </div>
+    
+    <div class="option">
+      <label>
+        <input type="checkbox" id="hideDownloadBar">
+        <span>Hide Download Bar/Shelf</span>
+      </label>
+    </div>
+    <div class="option-description">
+      Hide the download bar or shelf that appears at the bottom of the browser
+    </div>
+  </div>
+  
+  <div class="option-group">
+    <div class="option-title">Download Behavior</div>
+    
+    <div class="option">
+      <label>
+        <input type="checkbox" id="autoStart">
+        <span>Auto-Start Downloads</span>
+      </label>
+    </div>
+    <div class="option-description">
+      Start downloads immediately without prompting
+    </div>
+    
+    <div class="option">
+      <label for="conflictAction">When file exists:</label>
+      <select id="conflictAction" class="path-input">
+        <option value="uniquify">Add a number to avoid duplicate filenames</option>
+        <option value="overwrite">Overwrite existing files</option>
+        <option value="prompt">Ask what to do (not silent)</option>
+      </select>
+    </div>
+    <div class="option-description">
+      How to handle duplicate filenames
+    </div>
+  </div>
+  
+  <div class="advanced-section">
+    <div class="option-title">Troubleshooting</div>
+    
+    <div class="option">
+      <label>
+        <input type="checkbox" id="showDebugLogs">
+        <span>Enable Debug Logging</span>
+      </label>
+    </div>
+    <div class="option-description">
+      Log detailed information about downloads (for troubleshooting only)
+    </div>
+    
+    <div id="logsSection" class="hidden">
+      <div class="option-title">Recent Error Logs</div>
+      <div id="logs" class="log-container">
+        No logs available
+      </div>
+      <div class="btn-container">
+        <button id="clearLogs" class="save-btn" style="background: #dc3545;">Clear Logs</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="btn-container">
+    <button id="saveBtn" class="save-btn">Save Settings</button>
+  </div>
+  
+  <div id="status" class="status hidden"></div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
